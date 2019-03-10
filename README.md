@@ -10,8 +10,10 @@ for use on UM CAEN computers.
 For most users, it will be suffient to grab the most recent tagged release from
 the releases page and untar it into $HOME. For example, I would find the Clang
 binary at `/home/gregjm/bin/clang`. Be sure to add `$HOME/bin` to your `PATH`
-and add `$HOME/lib` to `LD_LIBRARY_PATH`. If you're using bash or zsh, your
-steps look like this:
+and add `$HOME/lib` to `LD_LIBRARY_PATH`.
+
+The first step is just downloading the artifacts and extracting them into your
+home folder.
 
 ```bash
 cd ~/Downloads
