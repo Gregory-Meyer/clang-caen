@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", type:"virtualbox", create:true, automount:true
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 8192
-    vb.cpus = 2
+    vb.memory = 12288
+    vb.cpus = 6
   end
 end
