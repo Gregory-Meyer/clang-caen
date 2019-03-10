@@ -1,7 +1,7 @@
 #!/bin/sh
 
 yum upgrade -y
-yum install -y ninja-build wget
+yum install -y ninja-build wget python-devel ncurses-devel libedit-devel
 yum groupinstall -y "Development Tools"
 
 wget https://github.com/Kitware/CMake/releases/download/v3.13.4/cmake-3.13.4-Linux-x86_64.tar.gz
@@ -15,4 +15,5 @@ cd ninja
 git checkout release
 python configure.py --bootstrap
 cp ninja /usr/local/bin/ninja
+cd ..
 rm -rf ninja
