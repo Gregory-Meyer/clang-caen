@@ -78,7 +78,7 @@ set -Ux CXX "$HOME/bin/clang++"
 set -Ux LD "$HOME/bin/ld.lld"
 set -Ux CFLAGS "-stdlib=libc++"
 set -Ux CXXFLAGS "-stdlib=libc++"
-set -Ux LDFLAGS "-fuse-ld=lld -Wl,-rpath=$HOME/lib"
+set -Ux LDFLAGS "-fuse-ld=lld -Wl,-rpath=$HOME/lib -L$HOME/lib -lc++ -lc++abi"
 ```
 
 If you use CMake or autoconf, these will be automatically respected. If you
