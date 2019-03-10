@@ -105,7 +105,7 @@ vagrant up # this will take a few minutes
 vagrant ssh
 ```
 
-You will now be SSH'd into a local VM running CentOS 7.6, CMake 3.13.4 and the
+You will now be SSH'd into a local VM running CentOS 7.6. CMake 3.13.4 and the
 latest release of Ninja (1.9.0 at the time of writing) are preinstalled, as is
 the default C/C++ toolchain on RHEL 7.6 - GCC 4.8.5. Inside the machine, run:
 
