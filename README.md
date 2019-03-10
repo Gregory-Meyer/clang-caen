@@ -15,7 +15,7 @@ steps look like this:
 
 ```bash
 cd ~/Downloads
-wget https://github.com/gregjm/clang-caen/archive/llvm-7.0.1-2019-03-10.tar.gz
+wget https://github.com/Gregory-Meyer/clang-caen/releases/download/llvm-7.0.1-2019-03-10/llvm-7.0.1-2019-03-10.tar.xz
 tar xvf llvm-7.0.1-2019-03-10.tar.xz
 cp -ar llvm-7.0.1-2019-03-10/. $HOME
 echo "export PATH=$HOME/bin:\$PATH" >> ~/.bashrc
