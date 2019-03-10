@@ -1,8 +1,9 @@
 # clang-caen
 
-This repository is a Vagrant environment that usable to build LLVM 7.0.1 on
-CentOS 7.6, roughly equivalent to a RHEL 7.6 machine such as those used by UM
-CAEN computers.
+This repository is a Vagrant environment suitable to build LLVM 7.0.1 on
+CentOS 7.6. CentOS 7.6 is about as close as you can get to RHEL 7.6 without
+paying for RHEL, so artifacts produced in this environment should be suitable
+for use on UM CAEN computers.
 
 ## Usage
 
@@ -25,11 +26,43 @@ If you're using fish, it's essentially the same:
 
 ```fish
 cd ~/Downloads
-wget https://github.com/gregjm/clang-caen/archive/llvm-7.0.1-2019-03-10.tar.gz
+wget https://github.com/Gregory-Meyer/clang-caen/releases/download/llvm-7.0.1-2019-03-10/llvm-7.0.1-2019-03-10.tar.xz
 tar xvf llvm-7.0.1-2019-03-10.tar.xz
 cp -ar llvm-7.0.1-2019-03-10/. $HOME
 set -Ux fish_user_paths $HOME/bin $fish_user_paths
 set -Ux LD_LIBRARY_PATH $HOME/lib:$LD_LIBRARY_PATH
+```
+
+If you are going to build programs and link them against libcxx for full C++17
+compatibility, I recommend setting the rpath of executables suitably. You can
+do this on a per-object basis as follows:
+
+```bash
+clang++ main.cpp -std=c++17 -stdlib=libc++ -Wl,-rpath=$HOME/lib
+```
+
+If you want this to be standard for all projects you compile and you use
+a metabuild system like CMake, export these environment variables, which will
+set you up to use the full LLVM toolchain:
+
+```bash
+export CC="$HOME/bin/clang"
+export CXX="$HOME/bin/clang++"
+export LD="$HOME/bin/ld.lld"
+export CFLAGS="-stdlib=libc++"
+export CXXFLAGS="-stdlib=libc++"
+export LDFLAGS="-fuse-ld=lld -Wl,-rpath=$HOME/lib"
+```
+
+Or in fish:
+
+```fish
+set -Ux CC "$HOME/bin/clang"
+set -Ux CXX "$HOME/bin/clang++"
+set -Ux LD "$HOME/bin/ld.lld"
+set -Ux CFLAGS "-stdlib=libc++"
+set -Ux CXXFLAGS "-stdlib=libc++"
+set -Ux LDFLAGS "-fuse-ld=lld -Wl,-rpath=$HOME/lib"
 ```
 
 ### DIY
@@ -48,7 +81,7 @@ vagrant up # this will take a few minutes
 vagrant ssh
 ```
 
-You will now be SSH'd into a local VM running CentOS 7.6. CMake 3.13.4 and the
+You will now be SSH'd into a local VM running CentOS 7.6, CMake 3.13.4 and the
 newest release of Ninja (1.9.0 at the time of writing) are preinstalled for
 you, as is the default C/C++ toolchain - GCC 4.8.5. Inside the machine, run:
 
