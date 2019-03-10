@@ -14,10 +14,10 @@ cmake /vagrant/llvm-project/llvm \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libcxx;libcxxabi;lldb;compiler-rt;lld;polly" \
     -DLLVM_USE_LINKER=gold \
-    -DLLVM_ENABLE_LTO=ON \
-    -DLLVM_PARALLEL_COMPILE_JOBS=2 \
-    -DLLVM_PARALLEL_LINK_JOBS=2
-cmake --build . -j 2
+    -DLLVM_PARALLEL_COMPILE_JOBS=6 \
+    -DLLVM_PARALLEL_LINK_JOBS=6 \
+    -DLLDB_DISABLE_PYTHON=ON
+cmake --build . -j 6
 
 mkdir -p ~/llvm-install
 cmake --build . --target install
