@@ -17,7 +17,7 @@ cmake /vagrant/llvm-project/llvm \
     -DLLVM_PARALLEL_COMPILE_JOBS=6 \
     -DLLVM_PARALLEL_LINK_JOBS=6 \
     -DLLDB_DISABLE_PYTHON=ON \
-    -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN
+    -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON
 cmake --build . -j 6
 
 mkdir -p ~/llvm-install
