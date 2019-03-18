@@ -1,6 +1,6 @@
 # clang-caen
 
-This repository is a Vagrant environment suitable to build LLVM 7.0.1 on
+This repository is a Vagrant environment suitable to build LLVM 8.0.0 on
 CentOS 7.6. CentOS 7.6 is about as close as you can get to RHEL 7.6 without
 paying for RHEL, so artifacts produced in this environment should be suitable
 for use on UM CAEN computers.
@@ -17,9 +17,9 @@ home folder.
 
 ```bash
 cd ~/Downloads
-wget https://github.com/Gregory-Meyer/clang-caen/releases/download/llvm-7.0.1-2019-03-10/llvm-7.0.1-2019-03-10.tar.xz
-tar xvf llvm-7.0.1-2019-03-10.tar.xz
-cp -ar llvm-7.0.1-2019-03-10/. $HOME
+wget https://github.com/Gregory-Meyer/clang-caen/releases/download/llvm-8.0.0-2019-03-18/llvm-8.0.0-2019-03-18.tar.xz
+tar xvf llvm-8.0.0-2019-03-18.tar.xz
+cp -ar llvm-8.0.0-2019-03-18/. $HOME
 ```
 
 The next steps depend on what shell you use.
@@ -107,13 +107,13 @@ vagrant up # this will take a few minutes
 vagrant ssh
 ```
 
-You will now be SSH'd into a local VM running CentOS 7.6. CMake 3.13.4 and the
+You will now be SSH'd into a local VM running CentOS 7.6. CMake 3.14.0 and the
 latest release of Ninja (1.9.0 at the time of writing) are preinstalled, as is
 the default C/C++ toolchain on RHEL 7.6 - GCC 4.8.5. Inside the machine, run:
 
 ```bash
 /vagrant/build.sh # this will take a few hours
-tar cfJ /vagrant/llvm-7.0.1.tar.xz ~/llvm-install
+tar cfJ /vagrant/llvm-8.0.0.tar.xz ~/llvm-install
 ```
 
 You should now see the LLVM tarball in this repository's root directory on your
